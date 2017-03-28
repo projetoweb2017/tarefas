@@ -5,6 +5,7 @@ public class Login {
 	
 	private static Login instance;
 	
+	private int id;
     private String Nome_Completo;
     private String Data_de_Nascimento;
     private String Sexo;
@@ -187,6 +188,16 @@ public class Login {
 	}
 	public void setID(int iD) {
 		ID = iD;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 

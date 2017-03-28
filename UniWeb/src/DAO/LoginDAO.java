@@ -30,7 +30,7 @@ public class LoginDAO {
             
             
             if(rs.next()){
-            	lo.setID(rs.getInt(1));
+            	lo.setId(rs.getInt(1));
             	lo.setNome_Completo(rs.getString(2));
             	lo.setData_de_Nascimento(rs.getString(3));
             	lo.setSexo(rs.getString(4));

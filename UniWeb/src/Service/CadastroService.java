@@ -13,6 +13,10 @@ public class CadastroService {
 		return ca;
 	}
 	
+	public Cadastro Carregar(int id) {
+		return dao.carregar(id);
+	}
+	
 	public boolean CheckUsuario(String Usuario){
 		return dao.CheckUsuario(Usuario);
 	}

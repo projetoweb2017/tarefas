@@ -3,6 +3,7 @@ package Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +33,7 @@ public class CadastroController extends HttpServlet {
 		Cadastro ca = new Cadastro();
         CadastroService se = new CadastroService();
         
+        //Carrega os campos para as Strings
         String pNome = request.getParameter("nome");
 		String pData = request.getParameter("data");
 		String pSexo = request.getParameter("sexo");
@@ -43,6 +45,7 @@ public class CadastroController extends HttpServlet {
 		String pUsuario = request.getParameter("usuario");
 		String pSenha = request.getParameter("senha");
 		
+		//Cria o objeto CA
 		ca.setNome_Completo(pNome);
 		ca.setData_de_Nascimento(pData);
 		ca.setSexo(pSexo);
@@ -55,13 +58,15 @@ public class CadastroController extends HttpServlet {
 		
 		
 		se.InserirCadastro(ca);	
+		ca = se.Carregar(ca.getId());
 		
 		
 		
-		PrintWriter out = response.getWriter();
-		out.println("<html><head><title>Cliente Cadastrado</title></head><body>");
-		out.println("<h2>Cadastro feito com Sucesso!<h2/>");
-	    out.println("</body></html>");
+		//enviar para o jsp
+		request.setAttribute("cadastro", ca);
+		RequestDispatcher view =
+		request.getRequestDispatcher("CarregarCadastro.jsp");
+		view.forward(request, response);
 
 
 
